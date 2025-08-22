@@ -4,6 +4,14 @@ from config import DATABASE
 skills = [ (_,) for _ in (['Python', 'SQL', 'API', 'Telegram'])]
 statuses = [ (_,) for _ in (['На этапе проектирования', 'В процессе разработки', 'Разработан. Готов к использованию.', 'Обновлен', 'Завершен. Не поддерживается'])]
 
+#conn = sqlite3
+#cursor = conn.cursor()
+
+#table_name = 'projects'
+
+#new_data_name = 'completion_of_project'
+#new_data_type = 'INTEGER'
+
 class DB_Manager:
     def __init__(self, database):
         self.database = database
@@ -126,7 +134,15 @@ WHERE project_name=? AND user_id=?
         sql = "" # Запиши сюда правильный SQL запрос
         self.__executemany(sql, [(skill_id, project_id)])
 
+    #alter_query = f"ALTER TABLE {table_name} ADD 10.12.2025 {new_data_name} {new_data_type}"
+    #cursor.execute(alter_query)
+
 
 if __name__ == '__main__':
     manager = DB_Manager(DATABASE)
-    manager.default_insert([('12112212','test english','тут ссылка','2')])
+    manager.default_insert()
+    manager.insert_project([('12112212','test english','тут ссылка','2')])
+
+
+
+
